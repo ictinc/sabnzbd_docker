@@ -1,0 +1,17 @@
+#!/usr/bin/with-contenv bash
+
+NZBTOMEDIA_DIR="/nzbtomedia"
+CONF_DIR="/config"
+
+# NzbToMedia config file doesn't exist
+[[ ! -f "$CONF_DIR/autoProcessMedia.cfg" ]] && cp $NZBTOMEDIA_DIR/autoProcessMedia.cfg.spec $CONF_DIR/autoProcessMedia.cfg
+
+# NzbToMedia Config files exist but not available for the app
+[[ ! -h "$NZBTOMEDIA_DIR/autoProcessMedia.cfg" ]] && ln -s $CONF_DIR/autoProcessMedia.cfg $NZBTOMEDIA_DIR/autoProcessMedia.cfg
+
+# Setup log file
+[[ ! -f "$NZBTOMEDIA_DIR/logs/nzbtomedia.log" ]] && { mkdir -p $NZBTOMEDIA_DIR/logs && touch $NZBTOMEDIA_DIR/logs/nzbtomedia.log; }
+
+chown -R abc.abc \
+    $CONF_DIR \
+    $NZBTOMEDIA_DIR
