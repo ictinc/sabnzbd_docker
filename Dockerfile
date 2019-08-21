@@ -20,8 +20,8 @@ RUN \
         python-sabyenc \
         sabnzbdplus \
         unrar \
-    ffmpeg \
-    git \
+        ffmpeg \
+        git \
         unzip && \
     git clone --depth 1 https://github.com/clinton-hall/nzbToMedia.git /nzbtomedia && \
 # cleanup
